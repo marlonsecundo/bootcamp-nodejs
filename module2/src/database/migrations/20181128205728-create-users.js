@@ -17,7 +17,6 @@ module.exports = {
     },
     password_hash: {
       allowNull: false,
-      defaultValue: value,
       type: Sequelize.BOOLEAN,
     },
     provider: {
