@@ -12,7 +12,5 @@ routes.post('/signin', SessionController.store);
 routes.get('/signup', UserController.create);
 routes.post('/signup', upload.single('avatar'), UserController.store);
 
-routes.get('/app/dashboard', (res, req) => {
-  res.render('Dashboard');
-});
+routes.get('/app/dashboard', (res, req) => {});
 module.exports = routes;
