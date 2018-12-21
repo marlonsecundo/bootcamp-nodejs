@@ -9,6 +9,7 @@ const guestMiddleware = require('./app/middlewares/guest');
 
 const UserController = require('./app/controllers/UserController');
 const SessionController = require('./app/controllers/SessionController');
+const DashboardController = require('./app/controllers/DashboardController');
 
 routes.use((req, res, next) => {
   res.locals.flashSucces = req.flash('success');
@@ -23,7 +24,7 @@ routes.post('/signin', SessionController.store);
 routes.get('/signup', guestMiddleware, UserController.create);
 routes.post('/signup', upload.single('avatar'), UserController.store);
 
-routes.get('/app/dashboard', () => {});
+routes.get('/app/dashboard', DashboardController.index);
 
 routes.use('/app', authMiddleware);
 
