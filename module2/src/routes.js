@@ -20,4 +20,6 @@ routes.get('/app/dashboard', () => {});
 
 routes.use('/app', authMiddleware);
 
+routes.get('/app/logout', SessionController.destroy);
+
 module.exports = routes;
