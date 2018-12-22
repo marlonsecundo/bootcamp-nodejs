@@ -36,6 +36,8 @@ routes.use('/app', authMiddleware);
 routes.get('/app/logout', SessionController.destroy);
 
 routes.get('/app/appointments/new/:provider', AppointmentController.create);
+routes.store('/app/appointments/new/:provider', AppointmentController.store);
+
 routes.get('/app/available/:provider', AvailableController.index);
 
 module.exports = routes;
