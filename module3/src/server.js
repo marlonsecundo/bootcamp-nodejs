@@ -6,6 +6,10 @@ class App {
   constructor() {
     this.express = express();
     this.isDev = process.env.NODE_ENV !== 'production';
+
+    this.middlewares();
+    this.database();
+    this.routes();
   }
 
   database() {
