@@ -8,7 +8,7 @@ class SessionController {
 
     if (!user) return res.status(400).json({ error: 'User not found' });
 
-    if (!(await user.compareHash(password))) res.status(400).json({ error: 'Invalid password' });
+    if (!(await user.compareHash(password))) return res.status(400).json({ error: 'Invalid password' });
 
     return res.json({ user, token: User.generateToken(user) });
   }
