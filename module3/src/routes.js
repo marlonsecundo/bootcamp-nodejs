@@ -1,5 +1,6 @@
 const express = require('express');
 const validate = require('express-validation');
+const handle = require('express-async-handler');
 
 const routes = express.Router();
 
@@ -13,19 +14,19 @@ const {
 } = require('./app/controllers');
 const validators = require('./app/validators');
 
-routes.post('/users', validate(validators.User), UserController.store);
-routes.post('/sessions', validate(validators.Session), SessionController.store);
+routes.post('/users', validate(validators.User), handle(UserController.store));
+routes.post('/sessions', validate(validators.Session), handle(SessionController.store));
 
 routes.use(authMiddleware);
 
 // Ads
-routes.get('/ads', AdController.index);
-routes.get('/ads/:id', AdController.show);
-routes.post('/ads', validate(validators.Ad), AdController.store);
-routes.put('/ads/:id', validate(validators.Ad), AdController.update);
-routes.get('/ads/:id', AdController.destroy);
+routes.get('/ads', handle(AdController.index));
+routes.get('/ads/:id', handle(AdController.show));
+routes.post('/ads', validate(validators.Ad), handle(AdController.store));
+routes.put('/ads/:id', validate(validators.Ad), handle(AdController.update));
+routes.delete('/ads/:id', handle(AdController.destroy));
 
 // Purchase
-routes.post('/purchases', validate(validators.Purchase), PurchaseController.store);
+routes.post('/purchases', validate(validators.Purchase), handle(PurchaseController.store));
 
 module.exports = routes;
