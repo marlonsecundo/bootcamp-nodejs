@@ -1,5 +1,3 @@
-
-
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema');
 
@@ -16,6 +14,8 @@ class UserSchema extends Schema {
         .notNullable()
         .unique();
       table.string('password', 60).notNullable();
+      table.string('token');
+      table.timestamp('token_created_at');
       table.timestamps();
     });
   }
