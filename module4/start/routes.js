@@ -8,3 +8,6 @@ Route.post('sessions', 'SessionController.store');
 
 // ForgotPassword
 Route.post('passwords', 'ForgotPasswordController.store');
+
+// File
+Route.post('/files', 'FileController.store');
