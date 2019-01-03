@@ -10,4 +10,5 @@ Route.post('sessions', 'SessionController.store');
 Route.post('passwords', 'ForgotPasswordController.store');
 
 // File
+Route.get('/files/:id', 'FileController.show');
 Route.post('/files', 'FileController.store');
