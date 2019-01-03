@@ -26,7 +26,7 @@ class ProjectController {
     return project;
   }
 
-  async update({ params, request, response }) {
+  async update({ params, request }) {
     const project = await Project.findOrFail(params.id);
     const data = request.only(['title', 'description']);
 
