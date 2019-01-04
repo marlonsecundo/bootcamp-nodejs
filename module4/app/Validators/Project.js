@@ -1,3 +1,4 @@
+const Antl = use('Antl');
 class Project {
   get rules() {
     return {
@@ -8,6 +9,10 @@ class Project {
 
   get validateAll() {
     return true;
+  }
+
+  get messages() {
+    return Antl.list('validation');
   }
 }
 

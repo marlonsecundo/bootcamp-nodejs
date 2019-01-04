@@ -1,3 +1,4 @@
+const Antl = use('Antl');
 class ResetPassword {
   get rules() {
     return {
@@ -8,6 +9,10 @@ class ResetPassword {
 
   get validateAll() {
     return true;
+  }
+
+  get messages() {
+    return Antl.list('validation');
   }
 }
 
