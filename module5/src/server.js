@@ -1,4 +1,6 @@
-require('dotenv').config();
+const envPath = process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.env';
+
+require('dotenv').config({ path: envPath });
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -63,4 +65,6 @@ class App {
   }
 }
 
-module.exports = new App().express;
+const app = new App();
+
+module.exports = { server: app.express, app };
