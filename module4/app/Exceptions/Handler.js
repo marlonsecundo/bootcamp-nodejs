@@ -3,7 +3,7 @@ const Env = use('Env');
 const Youch = use('Youch');
 class ExceptionHandler extends BaseExceptionHandler {
   async handle(error, { request, response }) {
-    if (error.name === 'ValidatonExcecption') {
+    if (error.name === 'ValidatonException') {
       return response.status(error.status).send(error.messages);
     }
 
