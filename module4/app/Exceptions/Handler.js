@@ -1,6 +1,10 @@
 const BaseExceptionHandler = use('BaseExceptionHandler');
 const Env = use('Env');
 const Youch = use('Youch');
+const Raven = require('raven');
+
+const Config = use('Config');
+
 class ExceptionHandler extends BaseExceptionHandler {
   async handle(error, { request, response }) {
     if (error.name === 'ValidatonException') {
@@ -17,7 +21,10 @@ class ExceptionHandler extends BaseExceptionHandler {
     return response.status(error.status);
   }
 
-  async report(error, { request }) {}
+  async report(error, { request }) {
+    Raven.config(Config.get('services.sentry.dsn'));
+    Raven.captureException(error);
+  }
 }
 
 module.exports = ExceptionHandler;
